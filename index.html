@@ -11,7 +11,7 @@
         </div>
         <div class="watermark-input">
             <h4><i class="fa fa-pencil" aria-hidden="true"></i>  Your own watermark:</h4>
-            <input type="text" name="" value="" class="waterText">
+            <input type="text" name="" value="watermark" class="waterText">
             <button type="" class="take">Take Picture</button>
         </div>
         <div class="container">
@@ -38,9 +38,9 @@
 
         function updateCanvas(){
             ctx.drawImage(video, 0, 0);
-            ctx.font = "100px Verdana";
+            ctx.font = "60px Verdana";
             ctx.fillStyle = "teal";
-            ctx.fillText(`${waterText.value}`, 380, 450);
+            ctx.fillText(`${waterText.value}`, 300, 450);
         }
 
         function setCanvas(){
