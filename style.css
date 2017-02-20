@@ -38,14 +38,10 @@ body {
 }
 
 .container {
-    display: flex;
+  display:flex;
+  justify-content:center;
 }
-.video {
-    height: 100%;
-}
-.pic{
-    flex-grow:1;
-}
+
 .take {
     background-color: transparent;
     color: darkolivegreen;

@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>H5 Water Mark</title>
-        <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Pangolin" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="style.css" rel="stylesheet">
     </head>
@@ -11,12 +11,12 @@
         </div>
         <div class="watermark-input">
             <h4><i class="fa fa-pencil" aria-hidden="true"></i>  Your own watermark:</h4>
-            <input type="text" name="" value="">
+            <input type="text" name="" value="" class="waterText">
             <button type="" class="take">Take Picture</button>
         </div>
         <div class="container">
-            <video width="" height="" class="video"></video>
-            <canvas class=" canvas"></canvas>         
+            <video width="" height="" class="pic video"></video>
+            <canvas class="pic canvas"></canvas>         
         </div>
     </body>
     <script>
@@ -24,6 +24,7 @@
         const canvas = document.querySelector('.canvas');
         const ctx = canvas.getContext('2d');
         const btn = document.querySelector('.take');
+        const waterText = document.querySelector('.waterText');
 
         function displayImage(){
             navigator.mediaDevices.getUserMedia({audio:false, video:true})
@@ -37,10 +38,9 @@
 
         function updateCanvas(){
             ctx.drawImage(video, 0, 0);
-            ctx.font = "100px Calibri";
+            ctx.font = "100px Verdana";
             ctx.fillStyle = "teal";
-            ctx.fillText('hello', 350, 450);
-            
+            ctx.fillText(`${waterText.value}`, 380, 450);
         }
 
         function setCanvas(){
