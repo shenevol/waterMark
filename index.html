@@ -1,19 +1,82 @@
 <html>
     <head>
         <title>H5 Water Mark</title>
+        <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
-        .hide {
-            visibility: hidden;
+        body {
+            margin:0;
+            padding:0;
+            font-family: 'Pangolin', cursive;
+            color: teal;
         }
+        * { color: inherit;}
+        .title {
+            background-color:teal;
+            color:white;
+            font-size:50px;
+            text-align: center;
+        }
+
+        .title h3{
+            margin: 0;
+        }
+
+        .watermark-input h4{
+            margin:0;
+            padding:0;
+        }
+        .watermark-input {
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+
+        }
+        .watermark-input input[type=text] {
+            width: 120px;
+            border: none;
+            font-size: 23px;
+        }
+        .watermark-input input[type=text]:focus {
+            outline: none;
+            border-bottom: 1px solid teal;
+        }
+        
+        .container {
+            display: flex;
+        }
+        .video {
+            height: 100%;
+        }
+        .pic{
+            flex-grow:1;
+        }
+        .take {
+            background-color: transparent;
+            color: darkolivegreen;
+            outline: none;
+            border:1px solid darkolivegreen;
+            border-radius: 8px;
+            font-size: 20px;
+            padding: 2px;
+            width: 120px;
+        }
+       
         </style>
     </head>
     <body>
-        <div>
-            <video width="" height="" class="video">
-                
-            </video>
-             <button type="" class="take">Take Picture</button>
-            <canvas class="canvas hide"></canvas>
+        <div class="title">
+            <h3>Hand-made WaterMark</h3>
+        </div>
+        <div class="watermark-input">
+            <h4><i class="fa fa-pencil" aria-hidden="true"></i>  Your own watermark:</h4>
+            <input type="text" name="" value="">
+            <button type="" class="take">Take Picture</button>
+        </div>
+        <div class="container">
+            <video width="" height="" class="video"></video>
+            <canvas class=" canvas"></canvas>         
         </div>
     </body>
     <script>
@@ -33,15 +96,21 @@
         }
 
         function updateCanvas(){
+            ctx.drawImage(video, 0, 0);
+            ctx.font = "100px Calibri";
+            ctx.fillStyle = "teal";
+            ctx.fillText('hello', 350, 450);
+            
+        }
+
+        function setCanvas(){
             const width = video.videoWidth;
             const height = video.videoHeight;
             canvas.height = height;
             canvas.width = width;
-            ctx.drawImage(video, 0, 0, width, height);
-            canvas.style.visibility = 'visible';
         }
-
         displayImage();
+        video.addEventListener('canplay',setCanvas);
         btn.addEventListener('click', updateCanvas);
     </script>
 </html>
