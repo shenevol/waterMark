@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>H5 Water Mark</title>
+        <style>
+        .hide {
+            visibility: hidden;
+        }
+        </style>
+    </head>
+    <body>
+        <div>
+            <video width="" height="" class="video">
+                
+            </video>
+             <button type="" class="take">Take Picture</button>
+            <canvas class="canvas hide"></canvas>
+        </div>
+    </body>
+    <script>
+        const video = document.querySelector('.video');
+        const canvas = document.querySelector('.canvas');
+        const ctx = canvas.getContext('2d');
+        const btn = document.querySelector('.take');
+
+        function displayImage(){
+            navigator.mediaDevices.getUserMedia({audio:false, video:true})
+            .then( (stream)=> {
+                const imgURL = window.URL.createObjectURL(stream);
+                video.src = imgURL;
+                video.play();
+            })
+            .catch(err => console.error('something went wrong!',err));
+        }
+
+        function updateCanvas(){
+            const width = video.videoWidth;
+            const height = video.videoHeight;
+            canvas.height = height;
+            canvas.width = width;
+            ctx.drawImage(video, 0, 0, width, height);
+            canvas.style.visibility = 'visible';
+        }
+
+        displayImage();
+        btn.addEventListener('click', updateCanvas);
+    </script>
+</html>
